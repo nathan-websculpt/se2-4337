@@ -5,7 +5,6 @@
 git clone https://github.com/nathan-websculpt/se2-4337.git your-proj-name
 cd your-proj-name
 yarn install
-
 ```
 
 
