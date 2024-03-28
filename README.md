@@ -7,6 +7,12 @@ cd your-proj-name
 yarn install
 ```
 
+# Dev Notes
+
+- [This seems to be a good example - by Naim-Bijapure](https://github.com/Naim-Bijapure/passkey-wallet)
+- Starting with [SimpleWebAuthn](https://github.com/MasterKale/SimpleWebAuthn)
+- 
+
 
 # 🏗 Scaffold-ETH 2
 
