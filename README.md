@@ -1,3 +1,13 @@
+#### this branch will be for developing AA with Dynamic + ZeroDev
+
+### clone this
+```
+git clone https://github.com/nathan-websculpt/se2-4337.git your-proj-name
+cd your-proj-name
+yarn install
+```
+
+
 # 🏗 Scaffold-ETH 2
 
 <h4 align="center">
