@@ -1,4 +1,4 @@
-#### this branch will be for developing AA with Dynamic + ZeroDev
+#### this branch will be for developing AA with Passkeys
 
 ### clone this
 ```
