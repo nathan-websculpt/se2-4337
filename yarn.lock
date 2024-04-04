@@ -1960,7 +1960,7 @@ __metadata:
     use-debounce: ^8.0.4
     usehooks-ts: ^2.13.0
     vercel: ^32.4.1
-    viem: 1.19.9
+    viem: ^2.9.8
     wagmi: 1.4.12
     zustand: ^4.1.2
   languageName: unknown
@@ -14519,27 +14519,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"viem@npm:1.19.9":
-  version: 1.19.9
-  resolution: "viem@npm:1.19.9"
-  dependencies:
-    "@adraffy/ens-normalize": 1.10.0
-    "@noble/curves": 1.2.0
-    "@noble/hashes": 1.3.2
-    "@scure/bip32": 1.3.2
-    "@scure/bip39": 1.2.1
-    abitype: 0.9.8
-    isows: 1.0.3
-    ws: 8.13.0
-  peerDependencies:
-    typescript: ">=5.0.4"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: a18633f42f8075b16819b6914f5236c726875407e8e3741b1434af48193ac5a7c12cbe1e1522b0e13df7af4dd4c5daeea2371a21f9338f27c271700a7f6d1595
-  languageName: node
-  linkType: hard
-
 "viem@npm:^1.0.0":
   version: 1.12.2
   resolution: "viem@npm:1.12.2"
@@ -14580,6 +14559,27 @@ __metadata:
     typescript:
       optional: true
   checksum: 53b2f53e1cfce73f283a160c52df7be38b3b84c62c2f825f518b7d7782a2efbd330873bb7467362271a1647c04580fa0c807cf2960f25bd2c95a562168b81b25
+  languageName: node
+  linkType: hard
+
+"viem@npm:^2.9.8":
+  version: 2.9.8
+  resolution: "viem@npm:2.9.8"
+  dependencies:
+    "@adraffy/ens-normalize": 1.10.0
+    "@noble/curves": 1.2.0
+    "@noble/hashes": 1.3.2
+    "@scure/bip32": 1.3.2
+    "@scure/bip39": 1.2.1
+    abitype: 1.0.0
+    isows: 1.0.3
+    ws: 8.13.0
+  peerDependencies:
+    typescript: ">=5.0.4"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: bb4477e329a67f200ff0397d325d4c0958d96b64e92f6146bc75749d86805f73a285525458423643c083805383cbadfaa8caa3eb3e95b2d2fcb672d255d7b5a7
   languageName: node
   linkType: hard
 
