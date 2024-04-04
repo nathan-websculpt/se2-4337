@@ -6,6 +6,7 @@ import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
 import { useSmartAccount } from "~~/hooks/burnerWallet/useSmartAccount";
 import { useSmartTransactor } from "~~/hooks/burnerWallet/useSmartTransactor";
+import { useState } from "react";
 
 const Home: NextPage = () => {
   console.log("page.tsx loaded...");
@@ -23,7 +24,13 @@ const Home: NextPage = () => {
           </h1>
           <div className="flex items-center justify-center space-x-2">
             <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={scaAddress} />
+            {scaAddress ? (
+              <>
+                <Address address={scaAddress} />
+              </>
+            ) : (
+              <></>
+            )}
           </div>
           <p className="text-lg text-center">
             Get started by editing{" "}

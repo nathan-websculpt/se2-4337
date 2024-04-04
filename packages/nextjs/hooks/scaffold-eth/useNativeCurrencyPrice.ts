@@ -16,6 +16,7 @@ export const useNativeCurrencyPrice = () => {
   // Get the price of ETH from Uniswap on mount
   useEffect(() => {
     (async () => {
+      console.log("targetNetwork from useNativeCurrencyPrice useEffect: ", targetNetwork);
       const price = await fetchPriceFromUniswap(targetNetwork);
       setNativeCurrencyPrice(price);
     })();
@@ -24,6 +25,7 @@ export const useNativeCurrencyPrice = () => {
   // Get the price of ETH from Uniswap at a given interval
   useInterval(
     async () => {
+      console.log("targetNetwork from useNativeCurrencyPrice useInterval: ", targetNetwork);
       const price = await fetchPriceFromUniswap(targetNetwork);
       setNativeCurrencyPrice(price);
     },
