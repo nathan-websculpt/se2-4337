@@ -5,7 +5,7 @@ import { SendUserOperationResult } from "@alchemy/aa-core";
 import { WriteContractResult, getPublicClient } from "@wagmi/core";
 import { Hash, TransactionReceipt, WalletClient } from "viem";
 import { useWalletClient } from "wagmi";
-import { getParsedError } from "~~/components/scaffold-eth";
+import { getParsedError } from "~~/components/scaffold-eth/Contract/utilsContract";
 import { getBlockExplorerTxLink, getUserOpExplorerTxLink, notification } from "~~/utils/scaffold-eth";
 
 type TransactionFunc = (
@@ -52,7 +52,6 @@ export const TxnNotification = ({
  * @returns function that takes in transaction function as callback, shows UI feedback for transaction and returns a promise of the transaction hash
  */
 export const useSmartTransactor = (_walletClient?: WalletClient): TransactionFunc => {
-  console.log("useSmartTransactor.tsx loaded...");
   let walletClient = _walletClient;
   const { data } = useWalletClient();
   const { provider } = useSmartAccount();
@@ -63,7 +62,7 @@ export const useSmartTransactor = (_walletClient?: WalletClient): TransactionFun
   const result: TransactionFunc = async (tx, options) => {
     if (!walletClient) {
       notification.error("Cannot access account");
-      console.error("⚡️ ~ file: useTransactor.tsx ~ error");
+      console.error("⚡️ ~ file: useSmartTransactor.tsx ~ error");
       return;
     }
 
@@ -121,7 +120,7 @@ export const useSmartTransactor = (_walletClient?: WalletClient): TransactionFun
       if (notificationId) {
         notification.remove(notificationId);
       }
-      console.error("⚡️ ~ file: useTransactor.ts ~ error", error);
+      console.error("⚡️ ~ file: useSmartTransactor.ts ~ error from TRY/CATCH", error);
       const message = getParsedError(error);
       notification.error(message);
       notification.error("Please try again");
