@@ -1,18 +1,72 @@
+//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import type { NextPage } from "next";
+import { encodeFunctionData, parseEther } from "viem";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
 import { useSmartAccount } from "~~/hooks/burnerWallet/useSmartAccount";
 import { useSmartTransactor } from "~~/hooks/burnerWallet/useSmartTransactor";
-import { useState } from "react";
+import { notification } from "~~/utils/scaffold-eth";
+
+//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
+
+//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
+
+//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
+
+//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
 
 const Home: NextPage = () => {
-  console.log("page.tsx loaded...");
   const { scaAddress, scaSigner } = useSmartAccount();
+  const [etherInput, setEtherInput] = useState("0.001");
   const transactor = useSmartTransactor();
   const [isTxnLoading, setIsTxnLoading] = useState(false);
+
+  const uoCallData = encodeFunctionData({
+    abi: [
+      {
+        inputs: [
+          {
+            internalType: "string",
+            name: "_newGreeting",
+            type: "string",
+          },
+        ],
+        name: "setGreeting",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+      },
+    ],
+    functionName: "setGreeting",
+    args: ["test one"],
+  });
+
+  const handleSignMessage = async () => {
+    if (!scaSigner) {
+      notification.error("Cannot access smart account");
+      return;
+    }
+    setIsTxnLoading(true);
+    try {
+      const userOperationPromise = scaSigner.sendUserOperation({
+        value: parseEther(etherInput),
+        // target: toAddress as `0x${string}`,
+        target: "0x95c2013149C57c8A127DFF285bb76d48C6fF0EA7",
+        data: uoCallData,
+      });
+
+      await transactor(() => userOperationPromise);
+    } catch (e) {
+      notification.error("Oops, something went wrong");
+      console.error("Error sending transaction: ", e);
+    } finally {
+      setIsTxnLoading(false);
+    }
+  };
 
   return (
     <>
@@ -71,6 +125,20 @@ const Home: NextPage = () => {
                 </Link>{" "}
                 tab.
               </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex-grow w-full px-8 py-12 mt-16 bg-base-300">
+          <div className="flex flex-col items-center justify-center gap-12 sm:flex-row">
+            <div className="flex flex-col items-center max-w-xs px-10 py-10 text-center bg-base-100 rounded-3xl">
+              <button
+                className="btn btn-primary rounded-xl"
+                disabled={!scaAddress || isTxnLoading}
+                onClick={handleSignMessage}
+              >
+                {isTxnLoading ? <span className="loading loading-spinner"></span> : "JUST ... DOOITT"}
+              </button>
             </div>
           </div>
         </div>
