@@ -26,52 +26,42 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alchemy/aa-accounts@npm:^3.6.1":
-  version: 3.6.1
-  resolution: "@alchemy/aa-accounts@npm:3.6.1"
+"@alchemy/aa-accounts@npm:^1.2.3, @alchemy/aa-accounts@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@alchemy/aa-accounts@npm:1.2.4"
   dependencies:
-    "@alchemy/aa-core": ^3.6.1
-    viem: ^2.8.6
-  peerDependencies:
-    viem: ^2.8.6
-  checksum: d1a01c21cdf1ad54cfb0039792e0b8ce438eb1c9686fdead2e0dcbdadd17153fbdba0774c11af25a5735253103ba2af272a3fa669f508ce547586f22128cf800
+    "@alchemy/aa-core": ^1.2.4
+    viem: ^1.21.4
+  checksum: f390ea56798256ee1bf88adcb68f765cb817fbd5ca84f1ca839e577d543d9d062517a5123bb655591120ec7f23274b1cd9c85db5f04d8013f51ed886c240ac3a
   languageName: node
   linkType: hard
 
-"@alchemy/aa-alchemy@npm:^3.7.3":
-  version: 3.7.3
-  resolution: "@alchemy/aa-alchemy@npm:3.7.3"
+"@alchemy/aa-alchemy@npm:^1.2.3":
+  version: 1.2.4
+  resolution: "@alchemy/aa-alchemy@npm:1.2.4"
   dependencies:
-    "@alchemy/aa-accounts": ^3.6.1
-    "@alchemy/aa-core": ^3.6.1
-    "@turnkey/http": ^2.6.2
-    "@turnkey/iframe-stamper": ^1.0.0
-    "@turnkey/viem": ^0.4.8
-    "@turnkey/webauthn-stamper": ^0.4.3
+    "@alchemy/aa-accounts": ^1.2.4
+    "@alchemy/aa-core": ^1.2.4
     alchemy-sdk: ^3.0.0
-    viem: ^2.8.6
-  peerDependencies:
-    viem: ^2.8.6
+    viem: ^1.21.4
   dependenciesMeta:
     "@alchemy/aa-accounts":
       optional: true
     alchemy-sdk:
       optional: true
-  checksum: d6b1a809bd1025e02c15ec71b99ad781d69271cc242f9f3d4b9c390b3160ceca41af4cdb642d1ec3f64af63ccd582cd18792e9c795ce814e2cdb4140f4b9efa9
+  checksum: 7d4fded9fc2db535c284ed607c064dec6102ce574775e7673e9c6461f37fa5124ed68ff1d5d2bff6648fa2657a74fff857b946a50903187b70aec0eb48275e0e
   languageName: node
   linkType: hard
 
-"@alchemy/aa-core@npm:^3.6.1":
-  version: 3.6.1
-  resolution: "@alchemy/aa-core@npm:3.6.1"
+"@alchemy/aa-core@npm:^1.2.3, @alchemy/aa-core@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@alchemy/aa-core@npm:1.2.4"
   dependencies:
     abitype: ^0.8.3
     eventemitter3: ^5.0.1
-    viem: ^2.8.6
+    viem: ^1.21.4
     zod: ^3.22.4
-  peerDependencies:
-    viem: ^2.8.6
-  checksum: 8526dfede353ac3a9b46975d0e2f1a40c160d43dbf4e01807116b19e7dd393834c0c60a4dbbe7dd20c46a6682a6069529f3412755e83df315fbbafe10cb55d60
+  checksum: 94f5b58eb4db1b6391f3d0ca05b49b85723b09b79ecdef6b539b7f4e162138f675042c7643673e0bf321ba387c3773dd9d087c3d42a36e0a2bb3f0e292a645ee
   languageName: node
   linkType: hard
 
@@ -1189,15 +1179,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/curves@npm:^1.3.0":
-  version: 1.4.0
-  resolution: "@noble/curves@npm:1.4.0"
-  dependencies:
-    "@noble/hashes": 1.4.0
-  checksum: 0014ff561d16e98da4a57e2310a4015e4bdab3b1e1eafcd18d3f9b955c29c3501452ca5d702fddf8ca92d570bbeadfbe53fe16ebbd81a319c414f739154bb26b
-  languageName: node
-  linkType: hard
-
 "@noble/hashes@npm:1.2.0, @noble/hashes@npm:~1.2.0":
   version: 1.2.0
   resolution: "@noble/hashes@npm:1.2.0"
@@ -1216,13 +1197,6 @@ __metadata:
   version: 1.3.2
   resolution: "@noble/hashes@npm:1.3.2"
   checksum: fe23536b436539d13f90e4b9be843cc63b1b17666a07634a2b1259dded6f490be3d050249e6af98076ea8f2ea0d56f578773c2197f2aa0eeaa5fba5bc18ba474
-  languageName: node
-  linkType: hard
-
-"@noble/hashes@npm:1.4.0, @noble/hashes@npm:^1.3.2":
-  version: 1.4.0
-  resolution: "@noble/hashes@npm:1.4.0"
-  checksum: 8ba816ae26c90764b8c42493eea383716396096c5f7ba6bea559993194f49d80a73c081f315f4c367e51bd2d5891700bcdfa816b421d24ab45b41cb03e4f3342
   languageName: node
   linkType: hard
 
@@ -1923,9 +1897,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/nextjs@workspace:packages/nextjs"
   dependencies:
-    "@alchemy/aa-accounts": ^3.6.1
-    "@alchemy/aa-alchemy": ^3.7.3
-    "@alchemy/aa-core": ^3.6.1
+    "@alchemy/aa-accounts": ^1.2.3
+    "@alchemy/aa-alchemy": ^1.2.3
+    "@alchemy/aa-core": ^1.2.3
     "@ethersproject/providers": ^5.7.2
     "@heroicons/react": ^2.0.11
     "@rainbow-me/rainbowkit": 1.3.5
@@ -1960,7 +1934,7 @@ __metadata:
     use-debounce: ^8.0.4
     usehooks-ts: ^2.13.0
     vercel: ^32.4.1
-    viem: ^2.9.8
+    viem: ^1.21.0
     wagmi: 1.4.12
     zustand: ^4.1.2
   languageName: unknown
@@ -2403,76 +2377,6 @@ __metadata:
   version: 1.0.4
   resolution: "@tsconfig/node16@npm:1.0.4"
   checksum: 202319785901f942a6e1e476b872d421baec20cf09f4b266a1854060efbf78cde16a4d256e8bc949d31e6cd9a90f1e8ef8fb06af96a65e98338a2b6b0de0a0ff
-  languageName: node
-  linkType: hard
-
-"@turnkey/api-key-stamper@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@turnkey/api-key-stamper@npm:0.4.0"
-  dependencies:
-    "@noble/curves": ^1.3.0
-    "@turnkey/encoding": 0.1.0
-    sha256-uint8array: ^0.10.7
-  checksum: 06d021e0ebfb6b804fbfebefbb90e0cae52d32f1215bab78e09c2eed425932d22b6404dd7d60de10773374be3b1946a638aa1155fc30f310e96039dcb928d2c0
-  languageName: node
-  linkType: hard
-
-"@turnkey/encoding@npm:0.1.0":
-  version: 0.1.0
-  resolution: "@turnkey/encoding@npm:0.1.0"
-  checksum: bd365c74e204ae0524e4521b571ac75f36d210a529612383b108cec2973a0c0b0d7e16d4faa7eb2b31d4cb6a545847d23b76bb2c98633a16e355412a1dd7e5e8
-  languageName: node
-  linkType: hard
-
-"@turnkey/http@npm:2.9.1, @turnkey/http@npm:^2.6.2":
-  version: 2.9.1
-  resolution: "@turnkey/http@npm:2.9.1"
-  dependencies:
-    "@turnkey/api-key-stamper": 0.4.0
-    "@turnkey/encoding": 0.1.0
-    "@turnkey/webauthn-stamper": 0.5.0
-    cross-fetch: ^3.1.5
-  checksum: 45c1715c8375bfc9f0023d221f6a15e0ac7a5cfc344267547eabfdb471f879de25c46379f620a33d424a7e310e1964075b8aa1d6c552e2a96d3ff5fc05437e64
-  languageName: node
-  linkType: hard
-
-"@turnkey/iframe-stamper@npm:^1.0.0":
-  version: 1.2.0
-  resolution: "@turnkey/iframe-stamper@npm:1.2.0"
-  checksum: 347c65fbd4b6945b18db8fe64c1543f7054281f117231c5423b82013f9eb7df43415210354ba9da2c69bacd8d525a27a1c21d744cf32010908506722cdbfabb0
-  languageName: node
-  linkType: hard
-
-"@turnkey/viem@npm:^0.4.8":
-  version: 0.4.13
-  resolution: "@turnkey/viem@npm:0.4.13"
-  dependencies:
-    "@turnkey/api-key-stamper": 0.4.0
-    "@turnkey/http": 2.9.1
-    cross-fetch: ^4.0.0
-    typescript: ^5.1
-  peerDependencies:
-    viem: ^1.16.6 || ^2.1.1
-  checksum: 7060cca03d97f4bf946675bc8f72e97b410f5b2ae3b7538ea74dff2646630aa4fa9b57cbc7b8aad57af5310d6077700b2c736a74a6a26964014a9b012ec221d2
-  languageName: node
-  linkType: hard
-
-"@turnkey/webauthn-stamper@npm:0.5.0":
-  version: 0.5.0
-  resolution: "@turnkey/webauthn-stamper@npm:0.5.0"
-  dependencies:
-    sha256-uint8array: ^0.10.7
-  checksum: 1f1ab0101ae0587b24afa3c3f9c93cdbf875a0331b094bf93af3c5e8bcc5ce1268b999a02923effc79f4d9f22dcd319ea6a6257719b052a54b794e310369ecbf
-  languageName: node
-  linkType: hard
-
-"@turnkey/webauthn-stamper@npm:^0.4.3":
-  version: 0.4.3
-  resolution: "@turnkey/webauthn-stamper@npm:0.4.3"
-  dependencies:
-    "@noble/hashes": ^1.3.2
-    buffer: ^6.0.3
-  checksum: 4e6ae8691c86b361ef16af812afaaea450a2262f75c68809f6d5e3b00669f421c451ad8a2684cdac6b8fed6ad08669942736530ab1e8bf2c49d2e2922e650965
   languageName: node
   linkType: hard
 
@@ -3909,21 +3813,6 @@ __metadata:
     zod:
       optional: true
   checksum: d7d887f29d6821e3f7a400de9620511b80ead3f85c5c87308aaec97965d3493e6687ed816e88722b4f512249bd66dee9e69231b49af0e1db8f69400a62c87cf6
-  languageName: node
-  linkType: hard
-
-"abitype@npm:1.0.0":
-  version: 1.0.0
-  resolution: "abitype@npm:1.0.0"
-  peerDependencies:
-    typescript: ">=5.0.4"
-    zod: ^3 >=3.22.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-    zod:
-      optional: true
-  checksum: ea2c0548c3ba58c37a6de7483d63389074da498e63d803b742bbe94eb4eaa1f51a35d000c424058b2583aef56698cf07c696eb3bc4dd0303bc20c6f0826a241a
   languageName: node
   linkType: hard
 
@@ -5580,21 +5469,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-fetch@npm:^3.1.4, cross-fetch@npm:^3.1.5":
+"cross-fetch@npm:^3.1.4":
   version: 3.1.8
   resolution: "cross-fetch@npm:3.1.8"
   dependencies:
     node-fetch: ^2.6.12
   checksum: 78f993fa099eaaa041122ab037fe9503ecbbcb9daef234d1d2e0b9230a983f64d645d088c464e21a247b825a08dc444a6e7064adfa93536d3a9454b4745b3632
-  languageName: node
-  linkType: hard
-
-"cross-fetch@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "cross-fetch@npm:4.0.0"
-  dependencies:
-    node-fetch: ^2.6.12
-  checksum: ecca4f37ffa0e8283e7a8a590926b66713a7ef7892757aa36c2d20ffa27b0ac5c60dcf453119c809abe5923fc0bae3702a4d896bfb406ef1077b0d0018213e24
   languageName: node
   linkType: hard
 
@@ -12728,13 +12608,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sha256-uint8array@npm:^0.10.7":
-  version: 0.10.7
-  resolution: "sha256-uint8array@npm:0.10.7"
-  checksum: ff735efd42664ab3d663cbc71a2e5f58a02637e9d57e072c509b5765f5368a2dc34fafefa390e065ef24415946b780ac72fd4582eeeb745ece42256de5b85e94
-  languageName: node
-  linkType: hard
-
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
   resolution: "shebang-command@npm:2.0.0"
@@ -14037,16 +13910,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.1":
-  version: 5.4.3
-  resolution: "typescript@npm:5.4.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: d74d731527e35e64d8d2dcf2f897cf8cfbc3428be0ad7c48434218ba4ae41239f53be7c90714089db1068c05cae22436af2ecba71fd36ecc5e7a9118af060198
-  languageName: node
-  linkType: hard
-
 "typescript@npm:^5.1.6":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
@@ -14064,16 +13927,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 2eee5c37cad4390385db5db5a8e81470e42e8f1401b0358d7390095d6f681b410f2c4a0c496c6ff9ebd775423c7785cdace7bcdad76c7bee283df3d9718c0f20
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^5.1#~builtin<compat/typescript>":
-  version: 5.4.3
-  resolution: "typescript@patch:typescript@npm%3A5.4.3#~builtin<compat/typescript>::version=5.4.3&hash=a1c5e5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 3a62fe90aa79d68c9ce38ea5edb2957e62801c733b99f0e5a2b8b50922761f68f7d9a40d28c544b449866e81185cddb93cba2496d0ff3fa52ef5b1f8bcace38c
   languageName: node
   linkType: hard
 
@@ -14541,16 +14394,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"viem@npm:^2.8.6":
-  version: 2.9.9
-  resolution: "viem@npm:2.9.9"
+"viem@npm:^1.21.0, viem@npm:^1.21.4":
+  version: 1.21.4
+  resolution: "viem@npm:1.21.4"
   dependencies:
     "@adraffy/ens-normalize": 1.10.0
     "@noble/curves": 1.2.0
     "@noble/hashes": 1.3.2
     "@scure/bip32": 1.3.2
     "@scure/bip39": 1.2.1
-    abitype: 1.0.0
+    abitype: 0.9.8
     isows: 1.0.3
     ws: 8.13.0
   peerDependencies:
@@ -14558,28 +14411,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 4504f6f78978834352b4fa48a433ccb587b913f7783023ee8fd42446589efdc748bf9789e43e1947020815dced9e488c5c375dda961db3f85393a756653ce2a8
-  languageName: node
-  linkType: hard
-
-"viem@npm:^2.9.8":
-  version: 2.9.8
-  resolution: "viem@npm:2.9.8"
-  dependencies:
-    "@adraffy/ens-normalize": 1.10.0
-    "@noble/curves": 1.2.0
-    "@noble/hashes": 1.3.2
-    "@scure/bip32": 1.3.2
-    "@scure/bip39": 1.2.1
-    abitype: 1.0.0
-    isows: 1.0.3
-    ws: 8.13.0
-  peerDependencies:
-    typescript: ">=5.0.4"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: bb4477e329a67f200ff0397d325d4c0958d96b64e92f6146bc75749d86805f73a285525458423643c083805383cbadfaa8caa3eb3e95b2d2fcb672d255d7b5a7
+  checksum: c351fdea2d53d2d781ac73c964348b3b9fc5dd46f9eb53903e867705fc9e30a893cb9f2c8d7a00acdcdeca27d14eeebf976eed9f948c28c47018dc9211369117
   languageName: node
   linkType: hard
 
