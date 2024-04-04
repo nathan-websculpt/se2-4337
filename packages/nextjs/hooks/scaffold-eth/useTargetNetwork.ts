@@ -14,8 +14,6 @@ export function useTargetNetwork(): { targetNetwork: ChainWithAttributes } {
   const setTargetNetwork = useGlobalState(({ setTargetNetwork }) => setTargetNetwork);
 
   useEffect(() => {
-    console.log("chain from useTargetNetwork useEffect: ", chain);
-    console.log("targetNetwork from useTargetNetwork useEffect: ", targetNetwork);
     const newSelectedNetwork = scaffoldConfig.targetNetworks.find(targetNetwork => targetNetwork.id === chain?.id);
     if (newSelectedNetwork && newSelectedNetwork.id !== targetNetwork.id) {
       setTargetNetwork(newSelectedNetwork);

@@ -1,5 +1,4 @@
 //looking at: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/hooks/burnerWallet/useSmartAccount.ts
-
 import { useEffect, useMemo, useState } from "react";
 import { loadBurnerSK } from "../scaffold-eth";
 import { useTargetNetwork } from "../scaffold-eth/useTargetNetwork";
@@ -12,7 +11,6 @@ const burnerPK = loadBurnerSK();
 const burnerSigner = LocalAccountSigner.privateKeyToAccountSigner(burnerPK);
 
 export const useSmartAccount = () => {
-  console.log("useSmartAccount.ts loaded...");
   const [scaAddress, setScaAddress] = useState<Address>();
   const [scaSigner, setScaSigner] = useState<AlchemyProvider>();
   const { targetNetwork: chain } = useTargetNetwork();
@@ -39,6 +37,10 @@ export const useSmartAccount = () => {
         chain,
         entryPointAddress: getDefaultEntryPointAddress(chain),
         factoryAddress: getDefaultLightAccountFactoryAddress(chain),
+        signer: scaAddress,
+        gasManagerConfig: {
+          policyId: process.env.NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID,
+        },
       });
     });
     const getScaAddress = async () => {
