@@ -37,10 +37,6 @@ export const useSmartAccount = () => {
         chain,
         entryPointAddress: getDefaultEntryPointAddress(chain),
         factoryAddress: getDefaultLightAccountFactoryAddress(chain),
-        signer: scaAddress,
-        gasManagerConfig: {
-          policyId: process.env.NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID,
-        },
       });
     });
     const getScaAddress = async () => {
