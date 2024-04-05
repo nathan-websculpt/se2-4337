@@ -2,10 +2,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { loadBurnerSK } from "../scaffold-eth";
 import { useTargetNetwork } from "../scaffold-eth/useTargetNetwork";
-import { getDefaultLightAccountFactoryAddress, createMultiOwnerMSCA } from "@alchemy/aa-accounts";
-import { AlchemyProvider } from "@alchemy/aa-alchemy";
-import { Address, LocalAccountSigner, getDefaultEntryPointAddress, SmartAccountSigner } from "@alchemy/aa-core";
 import scaffoldConfig from "~~/scaffold.config";
+import { createMultiOwnerModularAccount } from "@alchemy/aa-accounts/dist/types/src";
+import { createModularAccountAlchemyClient } from "@alchemy/aa-alchemy";
 
 const burnerPK = loadBurnerSK();
 const burnerSigner = LocalAccountSigner.privateKeyToAccountSigner(burnerPK);
@@ -16,47 +15,52 @@ export const useSmartAccount = () => {
   const { targetNetwork: chain } = useTargetNetwork();
   const provider = useMemo(
     () =>
-      new AlchemyProvider({
+      createModularAccountAlchemyClient({
         chain: chain,
         apiKey: scaffoldConfig.alchemyApiKey,
-        opts: {
-          txMaxRetries: 20,
-          txRetryIntervalMs: 2_000,
-          txRetryMulitplier: 1.2,
-        },
+        signer: burnerSigner,
+        // opts: {
+        //   txMaxRetries: 20,
+        //   txRetryIntervalMs: 2_000,
+        //   txRetryMulitplier: 1.2,
+        // },
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [chain.id],
   );
 
+  const getMultAcct = async () => {
+    const thisMultAcct = await createMultiOwnerModularAccount({
+      transport: provider,
+      chain,
+      signer: scaAddress,
+      gasManagerConfig: {
+        policyId: process.env.NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID,
+      },
+    });
+    return thisMultAcct;
+  };
   const smartAccountClient = createSmartAccountClient({
     transport: provider,
     chain,
-    account: await createMultiOwnerModularAccount({
-      transport: rpcTransport,
-      chain,
-      signer: scaAddress,
-        gasManagerConfig: {
-          policyId: process.env.NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID,
-        },
-    }),
+    account: getMultAcct(),
   });
 
   useEffect(() => {
     console.log("smartAccountClient: ", smartAccountClient);
     // const connectedProvider = provider.connect(provider => {
-      // return createMultiOwnerMSCA({
-      //   rpcClient: provider,
-      //   owner: burnerSigner,
-      //   chain,
-      //   entryPointAddress: getDefaultEntryPointAddress(chain),
-      //   factoryAddress: getDefaultLightAccountFactoryAddress(chain),
-      //   signer: scaAddress,
-      //   gasManagerConfig: {
-      //     policyId: process.env.NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID,
-      //   },
-      // });
-    });
+    // return createMultiOwnerMSCA({
+    //   rpcClient: provider,
+    //   owner: burnerSigner,
+    //   chain,
+    //   entryPointAddress: getDefaultEntryPointAddress(chain),
+    //   factoryAddress: getDefaultLightAccountFactoryAddress(chain),
+    //   signer: scaAddress,
+    //   gasManagerConfig: {
+    //     policyId: process.env.NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID,
+    //   },
+    // });
+    // });
     const getScaAddress = async () => {
       const address = await connectedProvider.getAddress();
       console.log("🔥 scaAddress", address);
