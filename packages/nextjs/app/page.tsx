@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       },
     ],
     functionName: "tst",
-    args: [],
+    // args: [],
   });
 
   const handleSignMessage = async () => {
