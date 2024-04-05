@@ -34,7 +34,7 @@ export const useSmartAccount = () => {
       return new LightSmartContractAccount({
         rpcClient: provider,
         owner: burnerSigner,
-        chain: chain,
+        chain,
         entryPointAddress: getDefaultEntryPointAddress(chain),
         factoryAddress: getDefaultLightAccountFactoryAddress(chain),
         signer: scaAddress,
