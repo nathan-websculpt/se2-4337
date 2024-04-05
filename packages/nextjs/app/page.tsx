@@ -41,7 +41,7 @@ const Home: NextPage = () => {
     setIsTxnLoading(true);
     try {
       const userOperationPromise = scaSigner.sendUserOperation({
-        value: parseEther(etherInput),
+        //value: parseEther(etherInput),
         target: "0xa1781259161F5D7F5FC7FA4aA625ff74C090E91e",
         data: uoCallData,
       });
