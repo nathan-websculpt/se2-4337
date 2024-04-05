@@ -27,6 +27,15 @@ contract YourContract {
 		bool premium,
 		uint256 value
 	);
+	
+	event Tst(
+		address indexed sender
+	);
+	
+	event Tst2(
+		address indexed whoSaidIt,
+		string watSaid
+	);
 
 	// Constructor: Called once on contract deployment
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
@@ -48,13 +57,6 @@ contract YourContract {
 	 * @param _newGreeting (string memory) - new greeting to save on the contract
 	 */
 	function setGreeting(string memory _newGreeting) public payable {
-		// Print data to the hardhat chain console. Remove when deploying to a live network.
-		console.log(
-			"Setting new greeting '%s' from %s",
-			_newGreeting,
-			msg.sender
-		);
-
 		// Change state variables
 		greeting = _newGreeting;
 		totalCounter += 1;
@@ -78,6 +80,14 @@ contract YourContract {
 	function withdraw() public isOwner {
 		(bool success, ) = owner.call{ value: address(this).balance }("");
 		require(success, "Failed to send Ether");
+	}
+
+	function tst() public {
+		emit Tst(msg.sender);
+	}
+
+	function tst2(string memory txt) public {
+		emit Tst2(msg.sender, txt);
 	}
 
 	/**

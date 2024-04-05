@@ -152,7 +152,7 @@ const deployedContracts = {
   },
   11155111: {
     YourContract: {
-      address: "0x95c2013149C57c8A127DFF285bb76d48C6fF0EA7",
+      address: "0xa1781259161F5D7F5FC7FA4aA625ff74C090E91e",
       abi: [
         {
           inputs: [
@@ -194,6 +194,38 @@ const deployedContracts = {
             },
           ],
           name: "GreetingChange",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+          ],
+          name: "Tst",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "whoSaidIt",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "watSaid",
+              type: "string",
+            },
+          ],
+          name: "Tst2",
           type: "event",
         },
         {
@@ -259,6 +291,26 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "tst",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "txt",
+              type: "string",
+            },
+          ],
+          name: "tst2",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
