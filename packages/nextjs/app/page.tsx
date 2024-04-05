@@ -11,6 +11,8 @@ import { useSmartAccount } from "~~/hooks/burnerWallet/useSmartAccount";
 import { useSmartTransactor } from "~~/hooks/burnerWallet/useSmartTransactor";
 import { notification } from "~~/utils/scaffold-eth";
 
+//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
+
 const Home: NextPage = () => {
   const { scaAddress, scaSigner } = useSmartAccount();
   const [etherInput, setEtherInput] = useState("0.001");
@@ -20,21 +22,14 @@ const Home: NextPage = () => {
   const uoCallData = encodeFunctionData({
     abi: [
       {
-        inputs: [
-          {
-            internalType: "string",
-            name: "_newGreeting",
-            type: "string",
-          },
-        ],
-        name: "setGreeting",
+        inputs: [],
+        name: "tst",
         outputs: [],
-        stateMutability: "payable",
+        stateMutability: "nonpayable",
         type: "function",
       },
     ],
-    functionName: "setGreeting",
-    args: ["test one"],
+    functionName: "tst",
   });
 
   const handleSignMessage = async () => {
@@ -46,7 +41,7 @@ const Home: NextPage = () => {
     try {
       const userOperationPromise = scaSigner.sendUserOperation({
         value: parseEther(etherInput),
-        target: "0x95c2013149C57c8A127DFF285bb76d48C6fF0EA7",
+        target: "0xa1781259161F5D7F5FC7FA4aA625ff74C090E91e",
         data: uoCallData,
       });
 
