@@ -13,13 +13,16 @@ import { notification } from "~~/utils/scaffold-eth";
 
 //used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
 
+//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
+
 const Home: NextPage = () => {
   const { scaAddress, scaSigner } = useSmartAccount();
   const [etherInput, setEtherInput] = useState("0.001");
+  const [txtInput, setTxtInput] = useState("this is a test");
   const transactor = useSmartTransactor();
   const [isTxnLoading, setIsTxnLoading] = useState(false);
 
-  const uoCallData = encodeFunctionData({
+  const uoSimpleCallData = encodeFunctionData({
     abi: [
       {
         inputs: [],
@@ -30,10 +33,49 @@ const Home: NextPage = () => {
       },
     ],
     functionName: "tst",
-    // args: [],
   });
 
-  const handleSignMessage = async () => {
+  const uoCallDataWithArgs = encodeFunctionData({
+    abi: [
+      {
+        inputs: [
+          {
+            internalType: "string",
+            name: "txt",
+            type: "string",
+          },
+        ],
+        name: "tst2",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+    ],
+    functionName: "tst2",
+    args: [txtInput],
+  });
+
+  const uoCallDataForPayable = encodeFunctionData({
+    abi: [
+      {
+        inputs: [
+          {
+            internalType: "string",
+            name: "_newGreeting",
+            type: "string",
+          },
+        ],
+        name: "setGreeting",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+      },
+    ],
+    functionName: "setGreeting",
+    args: [txtInput],
+  });
+
+  const handleSimpleCall = async () => {
     if (!scaSigner) {
       notification.error("Cannot access smart account");
       return;
@@ -41,9 +83,51 @@ const Home: NextPage = () => {
     setIsTxnLoading(true);
     try {
       const userOperationPromise = scaSigner.sendUserOperation({
-        //value: parseEther(etherInput),
         target: "0xa1781259161F5D7F5FC7FA4aA625ff74C090E91e",
-        data: uoCallData,
+        data: uoSimpleCallData,
+      });
+
+      await transactor(() => userOperationPromise);
+    } catch (e) {
+      notification.error("Oops, something went wrong");
+      console.error("Error sending transaction: ", e);
+    } finally {
+      setIsTxnLoading(false);
+    }
+  };
+
+  const handleCallWithArgs = async () => {
+    if (!scaSigner) {
+      notification.error("Cannot access smart account");
+      return;
+    }
+    setIsTxnLoading(true);
+    try {
+      const userOperationPromise = scaSigner.sendUserOperation({
+        target: "0xa1781259161F5D7F5FC7FA4aA625ff74C090E91e",
+        data: uoCallDataWithArgs,
+      });
+
+      await transactor(() => userOperationPromise);
+    } catch (e) {
+      notification.error("Oops, something went wrong");
+      console.error("Error sending transaction: ", e);
+    } finally {
+      setIsTxnLoading(false);
+    }
+  };
+
+  const handlePayableCall = async () => {
+    if (!scaSigner) {
+      notification.error("Cannot access smart account");
+      return;
+    }
+    setIsTxnLoading(true);
+    try {
+      const userOperationPromise = scaSigner.sendUserOperation({
+        value: parseEther(etherInput),
+        target: "0xa1781259161F5D7F5FC7FA4aA625ff74C090E91e",
+        data: uoCallDataForPayable,
       });
 
       await transactor(() => userOperationPromise);
@@ -116,19 +200,49 @@ const Home: NextPage = () => {
           </div>
         </div>
 
+        {/* just testing */}
         <div className="flex-grow w-full px-8 py-12 mt-16 bg-base-300">
           <div className="flex flex-col items-center justify-center gap-12 sm:flex-row">
             <div className="flex flex-col items-center max-w-xs px-10 py-10 text-center bg-base-100 rounded-3xl">
               <button
                 className="btn btn-primary rounded-xl"
                 disabled={!scaAddress || isTxnLoading}
-                onClick={handleSignMessage}
+                onClick={handleSimpleCall}
               >
-                {isTxnLoading ? <span className="loading loading-spinner"></span> : "JUST ... DOOITT"}
+                {isTxnLoading ? <span className="loading loading-spinner"></span> : "Simple Call"}
               </button>
             </div>
           </div>
         </div>
+
+        <div className="flex-grow w-full px-8 py-12 mt-16 bg-base-300">
+          <div className="flex flex-col items-center justify-center gap-12 sm:flex-row">
+            <div className="flex flex-col items-center max-w-xs px-10 py-10 text-center bg-base-100 rounded-3xl">
+              <button
+                className="btn btn-primary rounded-xl"
+                disabled={!scaAddress || isTxnLoading}
+                onClick={handleCallWithArgs}
+              >
+                {isTxnLoading ? <span className="loading loading-spinner"></span> : "Call with Args"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex-grow w-full px-8 py-12 mt-16 bg-base-300">
+          <div className="flex flex-col items-center justify-center gap-12 sm:flex-row">
+            <div className="flex flex-col items-center max-w-xs px-10 py-10 text-center bg-base-100 rounded-3xl">
+              <button
+                className="btn btn-primary rounded-xl"
+                disabled={!scaAddress || isTxnLoading}
+                onClick={handlePayableCall}
+              >
+                {isTxnLoading ? <span className="loading loading-spinner"></span> : "Payable Call"}
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* END: just testing */}
       </div>
     </>
   );
