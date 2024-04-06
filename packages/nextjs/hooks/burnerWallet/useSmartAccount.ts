@@ -10,6 +10,9 @@ import scaffoldConfig from "~~/scaffold.config";
 const burnerPK = loadBurnerSK();
 const burnerSigner = LocalAccountSigner.privateKeyToAccountSigner(burnerPK);
 
+//provider is an AlchemyProvider
+//connectedProvider is an new LightSmartContractAccount
+
 export const useSmartAccount = () => {
   const [scaAddress, setScaAddress] = useState<Address>();
   const [scaSigner, setScaSigner] = useState<AlchemyProvider>();
@@ -37,10 +40,6 @@ export const useSmartAccount = () => {
         chain,
         entryPointAddress: getDefaultEntryPointAddress(chain),
         factoryAddress: getDefaultLightAccountFactoryAddress(chain),
-        signer: scaAddress,
-        gasManagerConfig: {
-          policyId: process.env.NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID,
-        },
       });
     });
     const getScaAddress = async () => {

@@ -12,6 +12,7 @@ import { useSmartTransactor } from "~~/hooks/burnerWallet/useSmartTransactor";
 import { notification } from "~~/utils/scaffold-eth";
 
 const Home: NextPage = () => {
+  //scaSigner is <AlchemyProvider>
   const { scaAddress, scaSigner } = useSmartAccount();
   const [etherInput, setEtherInput] = useState("0.001");
   const [txtInput, setTxtInput] = useState("this is a test");
