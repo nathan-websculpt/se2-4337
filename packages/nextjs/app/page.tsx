@@ -11,10 +11,6 @@ import { useSmartAccount } from "~~/hooks/burnerWallet/useSmartAccount";
 import { useSmartTransactor } from "~~/hooks/burnerWallet/useSmartTransactor";
 import { notification } from "~~/utils/scaffold-eth";
 
-//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
-
-//used as reference: https://github.com/technophile-04/smart-wallet/blob/main/packages/nextjs/pages/index.tsx
-
 const Home: NextPage = () => {
   const { scaAddress, scaSigner } = useSmartAccount();
   const [etherInput, setEtherInput] = useState("0.001");
